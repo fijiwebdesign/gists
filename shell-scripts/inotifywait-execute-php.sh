@@ -2,6 +2,7 @@
  
 #
 # inotifywait-execute-php.sh
+# Watch and execute changed PHP files in a directory when they change
 #
 # Example:
 # inotifywait-execute-php.sh path/to/project/
@@ -28,20 +29,24 @@ fi
  
 path=$1
  
-while (true); do
- 
-    file=$( inotifywait $path | awk '{ print $3 }' )
-    
+inotifywait  -m --format '%f' $path | 
+
+while read file; do
+
     printf 'File changed: %s\n' "$file"
+
+    ext=${file##*.}
+
+    printf 'Extension: %s\n' "$ext"
  
     # execute if php file
-    is_php=$( echo $file | grep -P "\.php$" )
-    if [ $is_php ]; then
+    if [ "$ext" = "php" ]; then
         printf 'Executing PHP file: %s\n' "$file"
         php "$path/$file"
     fi
     
-    sleep 1; # breathe 
+    #sleep 1; # breathe
+
  
 done;
  
