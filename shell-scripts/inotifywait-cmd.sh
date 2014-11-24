@@ -27,7 +27,4 @@ Note:
 fi
  
 # start inotifywait and eval command when files change
-while true; do
-    inotifywait -r $1 && eval $2
-    sleep 1 # allow ctr+c
-done
+inotifywait -m -r $1 | while read change; do eval $2; sleep 1; done

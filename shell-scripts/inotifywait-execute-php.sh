@@ -29,7 +29,7 @@ fi
  
 path=$1
  
-inotifywait  -m --format '%f' $path | 
+inotifywait  -mr --format '%f' $path | 
 
 while read file; do
 
