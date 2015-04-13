@@ -1,0 +1,1 @@
+javascript:void($(document.body).append($('<script src="https://raw.githubusercontent.com/fijiwebdesign/gists/master/js/jquery.debug.events.js">')))
