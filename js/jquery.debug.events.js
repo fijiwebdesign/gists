@@ -1,4 +1,4 @@
-(function () {
+(function ($) {
     var elements = $(window.$0 || prompt('JQuery selector for element to debug events. Eg: .className'));
 
     if (!elements.length) {
@@ -18,11 +18,10 @@
 	    events.forEach(function (event) {
 	        var handler = event.handler;
 
-	        event.handler = function () {
-	            debugger;
-	            handler.apply(this, arguments);
-	        };
+	        console.log(handler);
+	        console.debug(handler);
+	        
 	    });
     });
     
-})();
+})(jQuery);

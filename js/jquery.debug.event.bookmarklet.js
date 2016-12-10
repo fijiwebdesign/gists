@@ -1,1 +1,1 @@
-javascript:void($(document.body).append($('<script src="https://raw.githubusercontent.com/fijiwebdesign/gists/master/js/jquery.debug.events.js">')))
+javascript:void($.ajax({url:'http://localhost/gists/js/jquery.debug.events.js',dataType:'jsonP'}))
